@@ -1,0 +1,65 @@
+@use "@/scss/utils/mixins" as *;
+.nav {
+  display: flex;
+  justify-content:space-between;
+}
+.navList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  background-color: #F3F4F6;
+  border-radius: 100px;
+  border: 1px solid #E1E1E275;
+  height: 42px;
+  @include tablet {
+    height: 100vh;
+    width: 100%;
+    border-radius: 10px;
+    gap: 5px;
+    font-size: 50px;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #E8E9ED;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-100%); // спочатку згорнуте
+    transform-origin: top ; // розгортання з верхнього краю
+    transition: transform 0.5s ease-in-out;
+  }
+}
+@include tablet {
+  .navList.active {
+    //transform: translateY(0);
+    transform: scale(1); // повністю розгорнуте
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+  }
+
+}
+.Connect {
+  font-size: 20px;
+  margin-top: 20px;
+  a {
+    padding: 8px 15px;
+  }
+}
+@media (min-width: 768px) {
+  .Connect {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-125%);
+    a {
+      padding: 8px 15px;
+    }
+  }
+}
+@media (min-width: 1110px) {
+  .Connect {
+    display: none;
+  }
+}

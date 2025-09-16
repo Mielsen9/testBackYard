@@ -1,5 +1,8 @@
 import * as s from './Header.module.scss'
 import Logo from "@/components/atoms/Logo";
+import {Nav} from "@/features/Nav";
+import Button from "@/components/atoms/Button";
+import React from "react";
 
 // Type
 interface Props {
@@ -13,6 +16,7 @@ const Header: React.FC<Props> = (props) => {
   return (
     <div className={s.Header}>
       <Logo/>
+      <Nav/>
     </div>
   )
 }

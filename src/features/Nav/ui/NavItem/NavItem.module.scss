@@ -1,0 +1,23 @@
+.navLink {
+  font-family: "Konnect", sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #AEB0B1;
+  display: block;
+  padding: 10px;
+  border-radius: 100px;
+  &:hover{
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 10px;
+
+  }
+  &:active {
+    color: white;
+  }
+  font-size: 13px;
+}
+.activeItem {
+  background-color: #303030;
+  color: white;
+}

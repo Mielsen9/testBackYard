@@ -1,0 +1,94 @@
+@use "@/scss/utils/function" as *;
+@use "@/scss/utils/mixins" as *;
+/* Nav Icon */
+.mobileNavBtn {
+  display: none;
+  position: absolute;
+  right: rem(10);
+  bottom: rem(20);
+  z-index: 999;
+
+  --time: 0.1s;
+
+  --width: 10px;
+  --height: 40px;
+
+  --line-height: 3px;
+  --spacing: 5px;
+
+  --color: #525352;
+  --radius: 4px;
+
+  /* Dynamic height and width */
+  height: calc(var(--line-height) * 3 + var(--spacing) * 2);
+  width: var(--width);
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    background-color: #E8E9ED;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+}
+
+.navIcon {
+  display: block;
+  position: relative;
+  width: var(--width);
+  height: var(--line-height);
+  background-color: var(--color);
+  border-radius: var(--radius);
+}
+
+.navIcon::before,
+.navIcon::after {
+  content: '';
+  display: block;
+
+  position: absolute;
+  left: -25%;
+
+  width: 15px;
+  height: var(--line-height);
+
+  border-radius: var(--radius);
+  background-color: var(--color);
+  transition: transform var(--time) ease-in,
+  top var(--time) linear var(--time);
+}
+
+.navIcon::before {
+  /* top: calc(var(--line-height) * -2); */
+  top: calc(-1 * (var(--line-height) + var(--spacing)));
+}
+
+.navIcon::after {
+  /* top: calc(var(--line-height) * 2); */
+  top: calc(var(--line-height) + var(--spacing));
+}
+
+.navIcon.active {
+  background-color: transparent;
+}
+
+.navIcon.active::before,
+.navIcon.active::after {
+  top: 0;
+  transition: top var(--time) linear,
+  transform var(--time) ease-in var(--time);
+}
+
+.navIcon.active::before {
+  transform: rotate(45deg);
+}
+
+.navIcon.active::after {
+  transform: rotate(-45deg);
+}

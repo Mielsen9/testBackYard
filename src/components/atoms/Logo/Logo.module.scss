@@ -1,4 +1,8 @@
 .Logo {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
   display: flex;
   gap: 7px;
   padding: 8px 11px;
