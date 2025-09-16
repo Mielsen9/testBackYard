@@ -5,7 +5,6 @@ import {RouterProvider} from "react-router-dom";
 
 // Імпортуємо Redux та створений store
 import { Provider } from 'react-redux';
-import { store } from './state/store';
 import { router } from "./routes";
 
 // Ініціалізація root елементу
@@ -19,9 +18,7 @@ const container = createRoot(root);
 
 // Підключаємо Redux та маршрути
 container.render(
-    <Provider store={store}>
-        <RouterProvider router={router} /> {/* Тут ми підключаємо маршрути */}
-    </Provider>
+  <RouterProvider router={router} />
 );
 
 
