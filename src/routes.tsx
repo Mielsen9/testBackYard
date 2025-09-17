@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
 			],
 		},
 	],
-	// {
-	// 	basename: "/zvir-petro-v-portfolio", // Шлях до репозиторію на GitHub
-	// }
+	{
+		basename: "/testBackYard", // Шлях до репозиторію на GitHub
+	}
 );
