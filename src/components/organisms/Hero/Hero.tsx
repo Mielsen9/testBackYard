@@ -1,9 +1,6 @@
 import {FC} from "react";
 import * as s from './Hero.module.scss'
 import Button from "@/components/atoms/Button";
-import Img from "@/components/atoms/Img/Img";
-import HeroJpeg from "@/asset/images/horoImg.png";
-import HeroWebP from "@/asset/images/horoImg.webp";
 
 // Type
 interface Props {
