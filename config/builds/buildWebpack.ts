@@ -19,18 +19,25 @@ return{
         assetModuleFilename:'[name] [ext]',
         clean: true
     },
-    // Optimization JS
+
+    // Optimization JS CSS
     optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    name: 'vendors',
-                    test: /node_modules/,
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            name: 'vendors',
+            test: /node_modules/,
+            chunks: 'all',
+            enforce: true,
+          },
+          styles: {
+            name: 'styles',
+            type: 'css/mini-extract',
+            chunks: 'all',
+            enforce: true,
+          },
+        },
+      },
     },
     // Optimization IMG Після 512кб lazyload
     performance: {

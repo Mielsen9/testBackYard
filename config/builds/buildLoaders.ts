@@ -2,6 +2,7 @@ import {ModuleOptions} from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/types";
 import ReactRefreshTypeScript from "react-refresh-typescript";
+import type { RuleSetRule } from "webpack";
 // import path from "path";
 // import {buildBabelLoader} from "./babel/babel";
 
@@ -61,43 +62,101 @@ export function buildLoaders(options:BuildOptions) : ModuleOptions['rules'] {
             }
         }
     };
-    const cssLoadersWithModules = {
-        loader: "css-loader",
-        options: {
-            modules: {
-            localIdentName: isDev ? '[name]__[local]' : '[hash:base64:8]',
-            },
+    // const cssLoadersWithModules = {
+    //     loader: "css-loader",
+    //     options: {
+    //         modules: {
+    //         localIdentName: isDev ? '[name]__[local]' : '[hash:base64:8]',
+    //         },
+    //
+    //         sourceMap: true,
+    //     },
+    // }
+    // const scssLoaders = {
+    //     loader: "sass-loader",
+    //     options: {
+    //         sassOptions: {
+    //             style: isDev ? 'expanded' : 'compressed',
+    //             // Path to import
+    //             // loadPaths: [
+    //             //     "absolute/path/a",
+    //             //     "absolute/path/b"
+    //             // ],
+    //             sourceMap: true
+    //         },
+    //     },
+    // }
+    // const scssLoader = {
+    //         test: /\.(sa|sc|c)ss$/i,
+    //         use: [
+    //             // Creates `style` nodes from JS strings
+    //             MiniCssExtractPlugin.loader,
+    //             // Translates CSS into CommonJS
+    //             cssLoadersWithModules,
+    //             // Post Css
+    //             postcssLoader,
+    //             // Compiles Sass to CSS
+    //             scssLoaders,
+    //         ],
+    //     }
+    const cssLoaders: RuleSetRule[] = [
+      // 1️⃣ Глобальні CSS (Swiper та інші node_modules)
+      {
+        test: /\.css$/i,
+        include: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+        ],
+      },
 
-            sourceMap: true,
-        },
-    }
-    const scssLoaders = {
-        loader: "sass-loader",
-        options: {
-            sassOptions: {
-                style: isDev ? 'expanded' : 'compressed',
-                // Path to import
-                // loadPaths: [
-                //     "absolute/path/a",
-                //     "absolute/path/b"
-                // ],
-                sourceMap: true
+      // 2️⃣ SCSS Modules (*.module.scss)
+      {
+        test: /\.module\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: isDev ? "[name]__[local]" : "[hash:base64:8]",
+              },
+              sourceMap: true,
             },
-        },
-    }
-    const scssLoader = {
-            test: /\.(sa|sc|c)ss$/i,
-            use: [
-                // Creates `style` nodes from JS strings
-                MiniCssExtractPlugin.loader,
-                // Translates CSS into CommonJS
-                cssLoadersWithModules,
-                // Post Css
-                postcssLoader,
-                // Compiles Sass to CSS
-                scssLoaders,
-            ],
-        }
+          },
+          postcssLoader,
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: isDev ? "expanded" : "compressed",
+              },
+            },
+          },
+        ],
+      },
+
+      // 3️⃣ Звичайні SCSS (*.scss без module)
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /\.module\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          postcssLoader,
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: isDev ? "expanded" : "compressed",
+              },
+            },
+          },
+        ],
+      },
+    ];
         // TS Loader
     const tsLoader =  {
         // ts loader вміє працювати з jsx
@@ -119,7 +178,7 @@ export function buildLoaders(options:BuildOptions) : ModuleOptions['rules'] {
 
     return [
         fontsLoader,
-        scssLoader,
+        ...cssLoaders,
         assetLoader,
         svgrLoader,
         tsLoader,

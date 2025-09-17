@@ -1,0 +1,119 @@
+@use "@/scss/utils/titles" as *;
+@use "@/scss/utils/function" as *;
+@use "@/scss/utils/mixins" as *;
+
+
+.slider {
+  width: 100%;
+  height: 450px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  @include laptop {
+    height: 400px;
+  }
+  @include mobile {
+    height: 550px;
+  }
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+}
+
+.content {
+  height: 390px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center top;
+  @include laptop {
+    background-position:  right bottom;
+    background-size: 30% auto;
+    align-items: start;
+    height: 260px;
+  }
+  @include mobile {
+    background-position: center top;
+    align-items: center;
+    height: 440px;
+    background-size: 70% auto;
+  }
+}
+.TitleContainer {
+  width: 110%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 45px;
+  p {
+    background-color: #2D322F;
+    padding: 10px 15px;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+  }
+  h4 {
+    margin: auto;
+  }
+  @include laptop {
+    width: 59%;
+  }
+  @include mobile {
+    width: 106%;
+  }
+
+}
+.DescriptionContainer {
+  width: 100%;
+  min-height: 120px;
+  text-align: left;
+  background-color: white;
+  padding: 20px;
+  border-radius: 31px;
+  h4 {
+    font-size: fun-adaptiv-rem(20, 16);
+    font-weight: 800;
+    font-family: "Archivo", sans-serif;
+    margin: 10px 0;
+  }
+  @include laptop {
+    width: 55%;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+/* Кружечки */
+:global(.swiper-pagination-bullet) {
+  background-color: #979797;   /* колір неактивних */
+  width: 28px;              /* розмір */
+  height: 4px;
+  opacity: 1;               /* щоб було видно */
+  margin: 0 6px;            /* відступи між ними */
+  transition: all 0.3s ease;
+  border-radius: 148px;       /* форма кружечка */
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: #5D625F; /* колір активного */
+}
+
+:global(.swiper-pagination) {
+  display: flex;           /* робимо flex-контейнер */
+  justify-content: flex-start; /* вирівнювання по лівому краю */
+  padding-left: 30px;      /* відступ від лівого краю */
+  bottom: 10px;            /* опціонально відрегулювати висоту від низу */
+  position: absolute;      /* зазвичай вже є, можна змінювати */
+  width: 100%;             /* обов’язково, щоб flex працював */
+}
