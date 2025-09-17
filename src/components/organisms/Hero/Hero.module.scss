@@ -1,0 +1,70 @@
+@use "@/scss/utils/titles" as *;
+@use "@/scss/utils/mixins" as *;
+@use "@/scss/utils/function" as *;
+
+.Hero {
+  width: 100%;
+  margin-top: -112px;
+}
+.Container {
+  padding-top: fun-adaptiv-rem(200, 100);
+  background-image: url('@/asset/gulp/images/upBackground.png');
+  background-repeat: no-repeat;
+  background-position: center -90px;
+  background-color: var(--page-bg);
+  background-size: 130% auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.ContentContainer {
+  width: 70%;
+  @include mobile {
+    width: 70%;
+    h1 {
+        font-size: 55px
+    }
+    h3 {
+      font-size: 13px
+    }
+  }
+}
+.ButtonContainer {
+  display: flex;
+  width: 140%;
+  @include mobile {
+    width: 130%;
+    p {
+      font-size: 13px;
+
+    }
+  }
+}
+.HeroImg {
+  background-image: url('@/asset/images/horoImg.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+  @include laptop {
+      background-size: 20% auto;
+  }
+  @include mobile {
+    background-position: 150px 300px;
+  }
+}
+.darkButton {
+  background-color: #2D2D2D;
+  color: white;
+  padding: 20px 100px;
+  @include mobile {
+    padding: 18px 30px;
+  }
+}
+.greyButton {
+  background-color: #E6E8EC;
+  color: #2E2E2E;
+  padding: 20px 55px;
+  margin-left: 20px;
+  @include mobile {
+    padding: 18px 30px;
+  }
+}

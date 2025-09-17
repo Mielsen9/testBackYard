@@ -1,0 +1,35 @@
+@font-face {
+	font-family: Archivo;
+	font-display: swap;
+	src: url("~@/asset/fonts/Archivo-Bold.woff2") format("woff2"), url("~@/asset/fonts/Archivo-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: Archivo;
+	font-display: swap;
+	src: url("~@/asset/fonts/Archivo-ExtraBold.woff2") format("woff2"), url("~@/asset/fonts/Archivo-ExtraBold.woff") format("woff");
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {
+	font-family: Archivo;
+	font-display: swap;
+	src: url("~@/asset/fonts/Archivo-SemiBold.woff2") format("woff2"), url("~@/asset/fonts/Archivo-SemiBold.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: Gilroy;
+	font-display: swap;
+	src: url("~@/asset/fonts/Gilroy-Medium.woff2") format("woff2"), url("~@/asset/fonts/Gilroy-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: Gilroy;
+	font-display: swap;
+	src: url("~@/asset/fonts/Gilroy-Semibold.woff2") format("woff2"), url("~@/asset/fonts/Gilroy-Semibold.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+}

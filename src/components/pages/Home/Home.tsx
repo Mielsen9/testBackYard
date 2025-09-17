@@ -1,5 +1,6 @@
 import * as s from './Home.module.scss'
 import Header from "@/components/organisms/Header";
+import Hero from "@/components/organisms/Hero";
 
 // Type
 interface Props {
@@ -12,7 +13,10 @@ const Home: React.FC<Props> = (props) => {
 
   return (
     <div className={s.Home}>
-      <Header />
+      <div className={s.wrapper}>
+        <Header />
+        <Hero/>
+      </div>
     </div>
   )
 }

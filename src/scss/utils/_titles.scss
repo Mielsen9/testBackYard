@@ -1,0 +1,42 @@
+@use '../utils/function' as *;
+
+.title_1 {
+	font-size: fun-adaptiv-rem(90, 15);
+	font-weight: 600;
+	font-family: "Archivo", sans-serif;
+  color: #303030;
+}
+
+.title_2 {
+	font-size: 48px;
+	font-weight: 700;
+	font-family: "Archivo", sans-serif;
+  color: #303030;
+}
+
+.title_3 {
+  margin-top: 15px;
+  margin-bottom: fun-adaptiv-rem(80, 35);
+	font-size: fun-adaptiv-rem(25, 9);
+	font-weight: 600;
+	font-family: "Gilroy", sans-serif;
+  color: #2626268C;
+}
+
+.title_4 {
+	font-size: 20px;
+	font-weight: 500;
+	font-family: "Gilroy", sans-serif;
+  color: #303030;
+}
+.title_5 {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #787878;
+}
+.text_Archivo {
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
